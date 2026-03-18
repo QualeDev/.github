@@ -20,12 +20,10 @@ Pull requests without tests will be asked to add them.
 ```bash
 git clone https://github.com/QualeDev/Engine.git
 cd Engine
-cd gpu && cmake -B build && cmake --build build && cd ..
-go build -tags gpu .
 go test ./...
 ```
 
-If you don't have CUDA or OpenCL installed, the C library still builds with a CPU reference backend. The `-tags gpu` flag enables the compiled C library regardless of which GPU backends are available.
+CI runs the full build (including GPU backends) on every push and pull request. You don't need CUDA or a GPU locally - just write and test your code, push it, and CI validates the complete build.
 
 ## Code style
 
