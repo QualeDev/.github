@@ -20,15 +20,12 @@ Pull requests without tests will be asked to add them.
 ```bash
 git clone https://github.com/QualeDev/Engine.git
 cd Engine
-go build ./...
+cd gpu && cmake -B build && cmake --build build && cd ..
+go build -tags gpu .
 go test ./...
 ```
 
-For GPU development:
-```bash
-cd gpu && cmake -B build && cmake --build build && cd ..
-go build -tags gpu .
-```
+If you don't have CUDA or OpenCL installed, the C library still builds with a CPU reference backend. The `-tags gpu` flag enables the compiled C library regardless of which GPU backends are available.
 
 ## Code style
 
